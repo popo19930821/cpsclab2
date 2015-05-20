@@ -45,7 +45,6 @@ public class StockWatcher implements EntryPoint {
   private Anchor signInLink = new Anchor("Sign In");
   private final StockServiceAsync stockService = GWT.create(StockService.class);
   private Anchor signOutLink = new Anchor("Sign Out");
-  private int temp = 0;
   public void onModuleLoad() {
 	    // Check login status using login service.
 	    LoginServiceAsync loginService = GWT.create(LoginService.class);
@@ -172,6 +171,7 @@ public class StockWatcher implements EntryPoint {
     if (stocks.contains(symbol))
       return;
     
+    displayStock(symbol);
     addStock(symbol);
   }
   
@@ -203,28 +203,28 @@ private void displayStock(final String symbol) {
       public void onClick(ClickEvent event) {
         removeStock(symbol);
       }
+
+      private void removeStock(final String symbol) {
+    	    stockService.removeStock(symbol, new AsyncCallback<Void>() {
+    	      public void onFailure(Throwable error) {
+    	      }
+    	      public void onSuccess(Void ignore) {
+    	        undisplayStock(symbol);
+    	      }
+    	    });
+    	  }
+
+    	  private void undisplayStock(String symbol) {
+    	    int removedIndex = stocks.indexOf(symbol);
+    	    stocks.remove(removedIndex);
+    	    stocksFlexTable.removeRow(removedIndex+1);
+    	  }
     });
     stocksFlexTable.setWidget(row, 3, removeStock);
 
     // Get the stock price.
     refreshWatchList();
 
-  }
-
-private void removeStock(final String symbol) {
-    stockService.removeStock(symbol, new AsyncCallback<Void>() {
-      public void onFailure(Throwable error) {
-      }
-      public void onSuccess(Void ignore) {
-        undisplayStock(symbol);
-      }
-    });
-  }
-
-  private void undisplayStock(String symbol) {
-    int removedIndex = stocks.indexOf(symbol);
-    stocks.remove(removedIndex);
-    stocksFlexTable.removeRow(removedIndex+1);
   }
 
   /**
