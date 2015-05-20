@@ -4,6 +4,9 @@ public class StockPrice {
 
   private String symbol;
   private double price;
+  
+  private int page;
+  private String conflict;
   private double change;
 
   public StockPrice() {
@@ -13,6 +16,10 @@ public class StockPrice {
     this.symbol = symbol;
     this.price = price;
     this.change = change;
+  }
+  
+  public String getConflict(){
+	  return this.conflict;
   }
 
   public String getSymbol() {
