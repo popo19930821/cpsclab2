@@ -18,12 +18,12 @@ public class StockPrice {
     this.change = change;
   }
   
-  public int getConflict(){
-	  return this.page;
+  public String getConflict(){
+	  return this.conflict;
   }
 
   public String getSymbol() {
-    return this.conflict;
+    return this.symbol;
   }
 
   public double getPrice() {
