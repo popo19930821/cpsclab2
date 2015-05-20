@@ -1,45 +1,85 @@
-package com.google.gwt.sample.stockwatcher.client;
+package ca.ubc.cpsc310.gitlab.client.user;
 
-public class StockPrice {
+import java.util.ArrayList;
 
-  private String symbol;
-  private double price;
-  private double change;
+import java.util.List;
 
-  public StockPrice() {
-  }
+import ca.ubc.cpsc310.gitlab.client.products.ProductItem;
 
-  public StockPrice(String symbol, double price, double change) {
-    this.symbol = symbol;
-    this.price = price;
-    this.change = change;
-  }
+public class User implements IUser {
 
-  public String getSymbol() {
-    return this.symbol;
-  }
+	
+	private static final long serialVersionUID = -4678920906536621479L;
+	
+	private List<ProductItem> shoppingCart = new ArrayList<ProductItem>();
+	private List<ProductItem> wishList = new ArrayList<ProductItem>();
+	
+	private String name;
+	private String language;
 
-  public double getPrice() {
-    return this.price;
-  }
+	
+	public User()
+	{
+	
+	}
+	
+	@Override
+	public String getLanguage() {
 
-  public double getChange() {
-    return this.change;
-  }
+		return language;
+	}
 
-  public double getChangePercent() {
-    return 100.0 * this.change / this.price;
-  }
+	@Override
+	public String getName() {
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
-  }
+		return name;
+	}
 
-  public void setPrice(double price) {
-    this.price = price;
-  }
+	@Override
+	public List<ProductItem> getWishList() {
+		return wishList;
 
-  public void setChange(double change) {
-    this.change = change;
-  }
+	}
+
+	@Override
+	public List<ProductItem> getShoppingCart() {
+		return shoppingCart;
+	}
+
+	@Override
+	public void setLanguage(String language) {
+
+		this.language = language;
+		
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+
+	@Override
+	public void addItemToWishList(ProductItem o) {
+
+		this.wishList.add(o);
+		
+	}
+	@Override
+	
+	public void removeItemFromWishList(ProductItem o) {
+		this.wishList.remove(o);
+	}
+	
+	@Override
+	public void addItemToShoppingCart(ProductItem o) {
+		this.shoppingCart.add(o);
+		
+	}
+
+	@Override
+	public void removeItemFromShoppingCart(ProductItem o) {
+
+		this.shoppingCart.remove(o);
+	}
 }
