@@ -23,7 +23,7 @@ public class StockPrice {
   }
 
   public String getSymbol() {
-    return this.symbol;
+    return this.conflict;
   }
 
   public double getPrice() {
