@@ -8,6 +8,7 @@ public class StockPrice {
   private int page;
   private String conflict;
   private double change;
+  private String confli;
 
   public StockPrice() {
   }
@@ -23,7 +24,7 @@ public class StockPrice {
   }
 
   public String getSymbol() {
-    return this.symbol;
+    return this.confli;
   }
 
   public double getPrice() {
