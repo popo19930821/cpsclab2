@@ -5,6 +5,7 @@ public class StockPrice {
   private String symbol;
   private double price;
   private double change;
+  private String confli;
 
   public StockPrice() {
   }
@@ -16,7 +17,7 @@ public class StockPrice {
   }
 
   public String getSymbol() {
-    return this.symbol;
+    return this.confli;
   }
 
   public double getPrice() {
