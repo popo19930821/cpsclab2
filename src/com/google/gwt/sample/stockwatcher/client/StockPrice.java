@@ -18,8 +18,8 @@ public class StockPrice {
     this.change = change;
   }
   
-  public String getConflict(){
-	  return this.conflict;
+  public int getConflict(){
+	  return this.page;
   }
 
   public String getSymbol() {
