@@ -39,6 +39,8 @@ public class StockWatcher implements EntryPoint {
   private Label lastUpdatedLabel = new Label();
   private ArrayList<String> stocks = new ArrayList<String>();
   private LoginInfo loginInfo = null;
+    private int myfriend;
+    
   private VerticalPanel loginPanel = new VerticalPanel();
   private Label loginLabel = new Label(
       "Please sign in to your Google Account to access the StockWatcher application.");
